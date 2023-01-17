@@ -1,4 +1,5 @@
 import { ICoinInfoResponse } from '../coinApi-types'
+import { ICoinInfo } from '../coinApi-types'
 
 export interface ICoinChartProps {
     coin: string;
@@ -21,10 +22,6 @@ export interface IChartDataFormattedItem {
 
 export interface IChartDataFormatted extends Array<IChartDataFormattedItem> { };
 
-export interface ICoinInfoProps {
-    [key: string]: any;
-}
-
 export interface ICoinStatsProps {
     data: ICoinInfoResponse;
 }
@@ -32,4 +29,8 @@ export interface ICoinStatsProps {
 export interface IStatsRow {
     title: string;
     value: string;
+}
+
+export interface ICoinInfoProps {
+  data: ICoinInfo;
 }

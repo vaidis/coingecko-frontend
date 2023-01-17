@@ -30,7 +30,23 @@ export interface ICoinsCountResponse {
     count: number;
 }
 
-export interface ICoinInfoResponse {
+interface last {
+    converted_last: { usd: number }
+};
+
+export interface ICoinInfo {
+    market_cap_rank: number;
+    tickers: last[];
+    sentiment_votes_up_percentage: number;
+    sentiment_votes_down_percentage: number;
+    links: {
+        homepage: string[],
+        subreddit_url: string,
+        twitter_screen_name: string,
+        chat_url: string
+    }
+}
+export interface ICoinInfoResponse extends ICoinInfo {
     name: string;
     id: string;
     image: {
@@ -72,7 +88,7 @@ export interface ICoinChartRequest {
 }
 
 export interface IGetCoinChartResponse {
-    market_caps: Array<IChartDataItem>;
-    prices: Array<IChartDataItem>;
-    total_volumes: Array<IChartDataItem>;
+    market_caps: IChartDataItem[];
+    prices: IChartDataItem[];
+    total_volumes: IChartDataItem[];
 }
