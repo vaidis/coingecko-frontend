@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
-import { coinListApi } from './coinApi';
+import { coinListApi } from './coinApi/coinApi';
 
 // Reducers
 const rootReducer = combineReducers({

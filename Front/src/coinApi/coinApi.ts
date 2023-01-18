@@ -9,7 +9,7 @@ import {
   ICoinInfoResponse,
   ICoinChartRequest,
   IGetCoinChartResponse,
-} from './coinApi-types'
+} from './coinApi-types';
 
 const baseUrl = "http://127.0.0.1:8080";
 const marketsUrl = '/coins/markets';

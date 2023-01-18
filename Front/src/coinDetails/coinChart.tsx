@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { useGetCoinChartQuery } from '../coinApi';
+import { useGetCoinChartQuery } from '../coinApi/coinApi';
 import { format } from 'date-fns';
 
 import Box from '@mui/material/Box';
@@ -37,12 +37,7 @@ ChartJS.register(
   Legend
 );
 
-export interface IDurationOption {
-  label: string;
-  value: string;
-}
-
-export interface IDurationOptions extends Array<IDurationOption> { }
+import { IDurationOptions } from './coinDetails-types';
 
 const CoinChart = (props: ICoinChartProps): JSX.Element => {
 
@@ -58,14 +53,12 @@ const CoinChart = (props: ICoinChartProps): JSX.Element => {
     window.addEventListener('resize', handleResize)
   }, []);
 
-
   const chartRequest = {
     coin: props.coin,
     days: duration
   }
 
   const { data, isSuccess, refetch } = useGetCoinChartQuery(chartRequest);
-
 
   const durationOptions: IDurationOptions = [
     { label: "1D", value: '1' },

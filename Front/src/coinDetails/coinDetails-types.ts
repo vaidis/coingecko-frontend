@@ -1,5 +1,5 @@
-import { ICoinInfoResponse } from '../coinApi-types'
-import { ICoinInfo } from '../coinApi-types'
+import { ICoinInfoResponse } from '../coinApi/coinApi-types'
+import { ICoinInfo } from '../coinApi/coinApi-types'
 
 export interface ICoinChartProps {
     coin: string;
@@ -32,5 +32,12 @@ export interface IStatsRow {
 }
 
 export interface ICoinInfoProps {
-  data: ICoinInfo;
+    data: ICoinInfo;
 }
+
+export interface IDurationOption {
+    label: string;
+    value: string;
+}
+
+export interface IDurationOptions extends Array<IDurationOption> { }

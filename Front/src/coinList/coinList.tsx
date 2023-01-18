@@ -9,8 +9,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import { useGetCoinsListQuery, useGetGlobalQuery } from '../coinApi';
-import { ICoinsListItem } from '../coinApi-types';
+import { useGetCoinsListQuery, useGetGlobalQuery } from '../coinApi/coinApi';
+import { ICoinsListItem } from '../coinApi/coinApi-types';
 
 import Pager from './coinListPager';
 

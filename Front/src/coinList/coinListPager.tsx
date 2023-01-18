@@ -1,4 +1,4 @@
-import { useGetCoinsCountQuery } from '../coinApi';
+import { useGetCoinsCountQuery } from '../coinApi/coinApi';
 import { useNavigate } from "react-router-dom";
 
 import Button from '@mui/material/Button';
