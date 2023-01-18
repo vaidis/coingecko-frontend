@@ -26,6 +26,8 @@ import {
   IChartDataFormatted
 } from './coinDetails-types';
 
+import { IDurationOptions } from './coinDetails-types';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -36,8 +38,6 @@ ChartJS.register(
   Filler,
   Legend
 );
-
-import { IDurationOptions } from './coinDetails-types';
 
 const CoinChart = (props: ICoinChartProps): JSX.Element => {
 
