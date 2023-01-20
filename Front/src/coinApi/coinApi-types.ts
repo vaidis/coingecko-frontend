@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
-
 export interface IGlobalResponse {
     active_cryptocurrencies: number;
     markets: number;

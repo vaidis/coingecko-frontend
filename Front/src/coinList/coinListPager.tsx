@@ -10,8 +10,10 @@ import { IPagerProps } from './coinList-types';
 
 const Pager = (props: IPagerProps): JSX.Element => {
   const { page, per_page, } = props;
+  
   const { data, error, isLoading, isSuccess } = useGetCoinsCountQuery();
   const navigate = useNavigate();
+
   const lastPage = (data: number) => Math.ceil(data / per_page)
 
   function handlePager(page: number) {
@@ -22,7 +24,7 @@ const Pager = (props: IPagerProps): JSX.Element => {
   return (<>
     {
       data && isSuccess &&
-      <Grid container justifyContent="center" style={{ marginTop: 60 }}>
+      <Grid container justifyContent="center" style={{ marginTop: 60, marginBottom: 60 }}>
         <ButtonGroup variant="contained" aria-label="outlined primary button group">
           <Button disabled={page === 1} onClick={() => navigate("/")}>First</Button>
           <Button disabled={page === 1} onClick={() => handlePager(page - 1)}>Prev</Button>

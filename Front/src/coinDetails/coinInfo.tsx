@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 
 import { ICoinInfoProps } from './coinDetails-types'
 
@@ -26,7 +27,7 @@ const CoinInfo = (props: ICoinInfoProps): JSX.Element => {
           Current price: ${data.tickers[0].converted_last.usd}
         </Grid>
         <Grid item xs={12} style={{ marginTop: 20 }}>
-          Homepage: <a target="_blank" href={data.links.homepage[0]}>{data.links.homepage[0]}</a>
+          Homepage: <Link target="_blank" href={data.links.homepage[0]}>{data.links.homepage[0]}</Link>
         </Grid>
         <Grid item style={{ marginTop: 20 }}>
           Votes: {data.sentiment_votes_up_percentage}%

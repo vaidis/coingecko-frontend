@@ -5,20 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #444444
 }
 
 a {
-  text-decoration: none;
-  color: #44a37d;
-}
-
-.coin-list a {
-  color: #444444;
-}
-
-header a {
-  color: #fff;
   text-decoration: none;
 }
 
@@ -30,15 +19,9 @@ header a {
   color: #e15241
 }
 
-.coinName {
-  font-weight: bold;
-  margin-left: 10px;
-}
-
 .coinSymbol {
   font-weight: normal;
   font-size: 0.8em;
   margin-left: 5px;
-  color: #777777;
   text-transform: uppercase;
 }

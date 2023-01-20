@@ -18,6 +18,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Grid from '@mui/material/Grid';
+import { useTheme } from '@mui/material';
 
 import {
   ICoinChartProps,
@@ -43,6 +44,14 @@ const CoinChart = (props: ICoinChartProps): JSX.Element => {
 
   const [duration, setDuration] = React.useState('max')
   const [redraw, setRedraw] = React.useState(false);
+  const theme = useTheme();
+
+  const chartRequest = {
+    coin: props.coin,
+    days: duration
+  }
+
+  const { data, isSuccess, refetch } = useGetCoinChartQuery(chartRequest);
 
   // BUG: responsive and redraw toghether cause double render
   React.useEffect(() => {
@@ -52,13 +61,6 @@ const CoinChart = (props: ICoinChartProps): JSX.Element => {
     }
     window.addEventListener('resize', handleResize)
   }, []);
-
-  const chartRequest = {
-    coin: props.coin,
-    days: duration
-  }
-
-  const { data, isSuccess, refetch } = useGetCoinChartQuery(chartRequest);
 
   const durationOptions: IDurationOptions = [
     { label: "1D", value: '1' },
@@ -95,9 +97,9 @@ const CoinChart = (props: ICoinChartProps): JSX.Element => {
         radius: 0
       }
     },
-    color: '#444444',
-    borderColor: '#444444',
-    backgroundColor: '#444444',
+    color: theme.palette.text.primary,
+    borderColor: theme.palette.text.primary,
+    backgroundColor: theme.palette.text.primary,
     responsive: true,
     maintainAspectRatio: true,
     aspectRatio: 2,
@@ -125,7 +127,8 @@ const CoinChart = (props: ICoinChartProps): JSX.Element => {
               }
             </ButtonGroup>
           </Grid>
-          <div id="chart" className="chart-container" style={{ position: "relative", height: "auto" }}>            <Line
+          <div id="chart" className="chart-container" style={{ position: "relative", height: "auto" }}>
+          <Line
               options={chartOptions}
               redraw={redraw}
               updateMode="resize"
