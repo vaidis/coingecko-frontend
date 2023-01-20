@@ -20,6 +20,8 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/material';
 
+import Spinner from '../common/spinner/spinner';
+
 import {
   ICoinChartProps,
   IChartDataItem,
@@ -51,7 +53,7 @@ const CoinChart = (props: ICoinChartProps): JSX.Element => {
     days: duration
   }
 
-  const { data, isSuccess, refetch } = useGetCoinChartQuery(chartRequest);
+  const { data, isLoading, isSuccess, refetch } = useGetCoinChartQuery(chartRequest);
 
   // BUG: responsive and redraw toghether cause double render
   React.useEffect(() => {
@@ -113,8 +115,8 @@ const CoinChart = (props: ICoinChartProps): JSX.Element => {
 
   return (
     <Box>
-      {
-        data && <>
+      {isLoading && <Spinner />}
+      {data && <>
           <Grid container justifyContent="flex-start" style={{ marginBottom: 20 }}>
             <ButtonGroup variant="contained" aria-label="outlined primary button group">
               {

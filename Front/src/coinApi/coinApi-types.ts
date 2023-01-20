@@ -20,10 +20,6 @@ export interface ICoinsListItem {
     price_change_percentage_24h: number;
 }
 
-export interface ICoinsListResponse {
-    [key: string]: any;
-}
-
 export interface ICoinsCountResponse {
     count: number;
 }

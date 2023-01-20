@@ -6,10 +6,10 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import Spinner from '../common/spinner/spinner';
 import CoinChart from './coinChart';
 import CoinStats from './coinStats';
 import CoinInfo from './coinInfo';
-
 
 const CoinDetails = (): JSX.Element => {
   const { id } = useParams();
@@ -22,7 +22,7 @@ const CoinDetails = (): JSX.Element => {
 
   return (
     <Box>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <Spinner />}
       {
         data && isSuccess && <>
           <Grid container style={{ marginBottom: 40 }}>

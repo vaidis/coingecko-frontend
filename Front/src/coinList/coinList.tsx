@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 
 import { useGetCoinsListQuery, useGetGlobalQuery } from '../coinApi/coinApi';
 import Pager from './coinListPager';
+import Spinner from '../common/spinner/spinner';
 
 import { ICoinsListItem } from '../coinApi/coinApi-types';
 
@@ -30,18 +31,13 @@ const CoinList = (): JSX.Element => {
 
   return (
     <>
-      {isLoading || globalIsLoading && <div>Loading...</div>}
-      {
-        globalData &&
-        <span className="globalText">
-          {`The global cryptocurrency market has currently ${globalData.active_cryptocurrencies} 
-          active cryptocurrencies, and ${globalData.markets} markets`}
-          <br />
-        </span>
-      }
-      {
-        data && isSuccess &&
+      {isLoading || globalIsLoading && <Spinner />}
+      {data && globalData && isSuccess &&
         <Box className="coin-list">
+          <span className="globalText">
+            {`The global cryptocurrency market has currently ${globalData.active_cryptocurrencies}
+            active cryptocurrencies, and ${globalData.markets} markets`}<br />
+          </span>
           <TableContainer style={{ marginTop: 20 }}>
             <Table size="small" aria-label="simple table">
               <TableHead>
@@ -101,9 +97,9 @@ const CoinList = (): JSX.Element => {
               </TableBody>
             </Table>
           </TableContainer>
+          <Pager page={page} per_page={per_page}/>
         </Box>
       }
-      <Pager page={page} per_page={per_page}/>
     </>
   )
 }
