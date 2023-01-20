@@ -10,7 +10,7 @@ import { IPagerProps } from './coinList-types';
 
 const Pager = (props: IPagerProps): JSX.Element => {
   const { page, per_page, } = props;
-  
+
   const { data, error, isLoading, isSuccess } = useGetCoinsCountQuery();
   const navigate = useNavigate();
 
