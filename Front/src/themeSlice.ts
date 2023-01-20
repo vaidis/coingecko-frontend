@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { PaletteMode } from '@mui/material';
 
 export interface IThemeState {
-    colorMode: any,
-    mode: any
+    mode: PaletteMode
 }
 
 const initialState: IThemeState = {
-    colorMode: {},
     mode: 'light'
 }
 
