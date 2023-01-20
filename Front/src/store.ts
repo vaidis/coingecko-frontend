@@ -2,9 +2,11 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import { coinListApi } from './coinApi/coinApi';
+import { themeSlice } from './themeSlice';
 
 // Reducers
 const rootReducer = combineReducers({
+  theme: themeSlice.reducer,
   [coinListApi.reducerPath]: coinListApi.reducer,
 })
 

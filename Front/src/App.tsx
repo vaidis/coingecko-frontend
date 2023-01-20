@@ -12,17 +12,11 @@ import Header from './Header'
 import CoinList from './coinList/coinList';
 import CoinDetails from './coinDetails/coinDetails';
 
-function App() {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+import { useSelector } from "react-redux";
+import { RootState } from './store';
 
-  const colorMode = React.useMemo(
-    () => ({
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
-    }),
-    [],
-  );
+function App() {
+  const { mode } = useSelector((state: RootState ) => state.theme);
 
   const theme = React.useMemo(
     () =>
@@ -40,13 +34,11 @@ function App() {
           subtitle1: {
             fontSize: 14,
             fontWeight: 'bold',
-            // paddingBottom: 20,
             color: mode === 'light' ? grey[900] : grey[200]
           },
           subtitle2: {
             fontSize: 14,
             fontWeight: 200,
-            // paddingBottom: 20,
             color: mode === 'light' ? grey[700] : grey[500]
           },
         },
@@ -93,14 +85,10 @@ function App() {
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Header colorMode={colorMode} theme={theme} />
+          <Header />
           <Container maxWidth="md">
             <Box sx={{ flexGrow: 1 }}>
-              <Grid container
-                spacing={0}
-                direction="column"
-                justifyContent="center"
-              >
+              <Grid container spacing={0} direction="column" justifyContent="center">
                 <Routes>
                   <Route path="/" element={<CoinList />} />
                   <Route path="/coin/:id" element={<CoinDetails />} />

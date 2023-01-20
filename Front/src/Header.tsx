@@ -8,10 +8,18 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { useTheme } from '@mui/material';
 
-const Header = (props: any): JSX.Element => {
-  const theme = useTheme();
+import { useSelector, useDispatch } from "react-redux";
+import { toggleModeAction } from "./themeSlice";
+
+import { IThemeState } from './themeSlice'
+import { RootState } from './store';
+
+const Header = (): JSX.Element => {
+
+  const dispatch = useDispatch();
+  const theme: IThemeState = useSelector((state: RootState ) => state.theme);
+  const toggleModeHander = () => dispatch(toggleModeAction())
 
   return (
     <Box style={{ marginBottom: 60 }} sx={{ flexGrow: 1 }}>
@@ -20,8 +28,8 @@ const Header = (props: any): JSX.Element => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link sx={{ color: "white" }} component={RouterLink} to="/">CoinGecko Data</Link>
           </Typography>
-          <IconButton sx={{ ml: 1 }} onClick={props.colorMode.toggleColorMode} color="inherit">
-            {props.theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          <IconButton sx={{ ml: 1 }} onClick={toggleModeHander} color="inherit">
+            {theme.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
         </Toolbar>
       </AppBar>
