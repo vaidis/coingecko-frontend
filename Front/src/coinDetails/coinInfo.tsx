@@ -14,7 +14,6 @@ import { ICoinInfoProps } from './coinDetails-types'
 
 const CoinInfo = (props: ICoinInfoProps): JSX.Element => {
   const { data } = props;
-  console.log("CoinInfo props.data: ", data)
 
   return (
     <Box>
@@ -37,12 +36,14 @@ const CoinInfo = (props: ICoinInfoProps): JSX.Element => {
         </Grid>
       </Grid>
       <Grid container justifyContent="flex-start" style={{ marginTop: 30, marginBottom: 30 }}>
-        {data.links.subreddit_url &&
+        {
+          data.links.subreddit_url &&
           <Button style={{ marginRight: 10, marginTop: 10 }} variant="outlined" startIcon={<RedditIcon />} href={data.links.subreddit_url}>
             Reddit
           </Button>
         }
-        {data.links.twitter_screen_name &&
+        {
+          data.links.twitter_screen_name &&
           <Button style={{ marginRight: 10, marginTop: 10 }} variant="outlined" startIcon={<TwitterIcon />} href={`https://twitter.com/${data.links.twitter_screen_name}`}>
             Twitter
           </Button>

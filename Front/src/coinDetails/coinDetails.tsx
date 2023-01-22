@@ -6,23 +6,30 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import Spinner from '../common/spinner/spinner';
+import Spinner from '../common/spinner';
 import CoinChart from './coinChart';
 import CoinStats from './coinStats';
 import CoinInfo from './coinInfo';
+import Error from '../common/error';
 
 const CoinDetails = (): JSX.Element => {
   const { id } = useParams();
   const {
     data,
     error,
+    isError,
     isLoading,
     isSuccess,
   } = useGetCoinInfoQuery(id ? id : '');
 
   return (
     <Box>
-      {isLoading && <Spinner />}
+      {
+        isError && <Error errorProp={error} />
+      }
+      {
+        isLoading && <Spinner />
+      }
       {
         data && isSuccess && <>
           <Grid container style={{ marginBottom: 40 }}>
@@ -45,7 +52,6 @@ const CoinDetails = (): JSX.Element => {
               <Typography variant="body2" dangerouslySetInnerHTML={{ __html: data.description.en }}></Typography>
             </Grid>
           </Grid>
-
         </>
       }
     </Box>

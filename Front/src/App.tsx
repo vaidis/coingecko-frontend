@@ -2,13 +2,14 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import { teal, grey } from '@mui/material/colors';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import Header from './Header'
+import Header from './layout/header'
+import Footer from './layout/footer'
+
 import CoinList from './coinList/coinList';
 import CoinDetails from './coinDetails/coinDetails';
 
@@ -16,7 +17,7 @@ import { useSelector } from "react-redux";
 import { RootState } from './store';
 
 function App() {
-  const { mode } = useSelector((state: RootState ) => state.theme);
+  const { mode } = useSelector((state: RootState) => state.theme);
 
   const theme = React.useMemo(
     () =>
@@ -45,10 +46,10 @@ function App() {
         palette: {
           mode,
           action: {
-            active: "#00f",
+            active: "#000",
             hover: "#f00",
-            focus: "#00f",
-            selected: "#00f",
+            focus: "#000",
+            selected: "#000",
             disabled: "#fff",
             disabledBackground: "#444",
           },
@@ -58,6 +59,10 @@ function App() {
           ...(mode === 'light'
             ? {
               // light
+              background: {
+                default: 'white',
+                paper: grey[200],
+              },
               text: {
                 primary: grey[800],
                 secondary: grey[800],
@@ -67,7 +72,7 @@ function App() {
               // dark
               background: {
                 default: grey[900],
-                paper: grey[900],
+                paper: 'black',
               },
               text: {
                 primary: grey[200],
@@ -81,24 +86,21 @@ function App() {
   );
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Header />
-          <Container maxWidth="md">
-            <Box sx={{ flexGrow: 1 }}>
-              <Grid container spacing={0} direction="column" justifyContent="center">
-                <Routes>
-                  <Route path="/" element={<CoinList />} />
-                  <Route path="/coin/:id" element={<CoinDetails />} />
-                </Routes>
-              </Grid>
-            </Box>
-          </Container>
-        </ThemeProvider>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Header />
+        <Container maxWidth="md">
+          <Box>
+            <Routes>
+              <Route path="/" element={<CoinList />} />
+              <Route path="/coin/:id" element={<CoinDetails />} />
+            </Routes>
+          </Box>
+        </Container>
+        <Footer />
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

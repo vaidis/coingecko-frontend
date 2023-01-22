@@ -7,12 +7,14 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 
 import { IPagerProps } from './coinList-types';
+import { useTheme } from '@mui/material';
 
 const Pager = (props: IPagerProps): JSX.Element => {
   const { page, per_page, } = props;
 
   const { data, error, isLoading, isSuccess } = useGetCoinsCountQuery();
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const lastPage = (data: number) => Math.ceil(data / per_page)
 
@@ -24,8 +26,11 @@ const Pager = (props: IPagerProps): JSX.Element => {
   return (<>
     {
       data && isSuccess &&
-      <Grid container justifyContent="center" style={{ marginTop: 60, marginBottom: 60 }}>
-        <ButtonGroup variant="contained" aria-label="outlined primary button group">
+      <Grid container justifyContent="center" sx={{ mt: 8, mb: 8 }}>
+        <ButtonGroup
+          variant="contained"
+          sx={{background: theme.palette.background.paper}}
+        >
           <Button disabled={page === 1} onClick={() => navigate("/")}>First</Button>
           <Button disabled={page === 1} onClick={() => handlePager(page - 1)}>Prev</Button>
           <Typography style={{ padding: 10 }}>Page {page} from {lastPage(data.count)}</Typography>

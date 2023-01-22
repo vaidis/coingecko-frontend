@@ -13,7 +13,8 @@ import Typography from '@mui/material/Typography';
 
 import { useGetCoinsListQuery, useGetGlobalQuery } from '../coinApi/coinApi';
 import Pager from './coinListPager';
-import Spinner from '../common/spinner/spinner';
+import Spinner from '../common/spinner';
+import Error from '../common/error';
 
 import { ICoinsListItem } from '../coinApi/coinApi-types';
 
@@ -26,13 +27,32 @@ const CoinList = (): JSX.Element => {
 
   // For Query
   const payload = { page, per_page }
-  const { data, isLoading, isSuccess } = useGetCoinsListQuery(payload);
-  const { data: globalData, isLoading: globalIsLoading, isSuccess: lobalSuccess } = useGetGlobalQuery();
+  const {
+    data,
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetCoinsListQuery(payload);
+
+  const {
+    data: globalData,
+    isLoading: globalIsLoading,
+    isSuccess: globalSuccess,
+    isError: globalIsError,
+    error: globalError
+  } = useGetGlobalQuery();
 
   return (
     <>
-      {isLoading || globalIsLoading && <Spinner />}
-      {data && globalData && isSuccess &&
+      {
+        isError && <Error errorProp={error} />
+      }
+      {
+        isLoading || globalIsLoading && <Spinner />
+      }
+      {
+        data && globalData && isSuccess &&
         <Box className="coin-list">
           <span className="globalText">
             {`The global cryptocurrency market has currently ${globalData.active_cryptocurrencies}
