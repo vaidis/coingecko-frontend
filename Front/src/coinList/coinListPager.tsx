@@ -26,7 +26,7 @@ const Pager = (props: IPagerProps): JSX.Element => {
   return (<>
     {
       data && isSuccess &&
-      <Grid container justifyContent="center" sx={{ mt: 8, mb: 8 }}>
+      <Grid container justifyContent="center" sx={{ mt: 8, mb: 8 }} aria-label="pager">
         <ButtonGroup
           variant="contained"
           sx={{background: theme.palette.background.paper}}

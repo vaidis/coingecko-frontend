@@ -10,6 +10,7 @@ router.get('/coins/markets', function (req, res) {
 
   api_helper.REMOTE_API_call(url)
     .then(response => {
+      console.log("GET /coins/markets");
       res.json(response);
     })
     .catch(error => {
@@ -24,6 +25,7 @@ router.get('/count', function (req, res) {
 
   api_helper.REMOTE_API_call(url)
     .then(response => {
+      console.log("GET /count");
       res.json({'count': response.data.active_cryptocurrencies});
     })
     .catch(error => {
@@ -39,6 +41,7 @@ router.get('/coin/:id', function (req, res) {
 
   api_helper.REMOTE_API_call(url)
     .then(response => {
+      console.log("GET /coin/:id");
       res.json(response);
     })
     .catch(error => {
@@ -55,6 +58,7 @@ router.get('/coin/:id/chart/:days?', function (req, res) {
   console.log("chart url:", url)
   api_helper.REMOTE_API_call(url)
     .then(response => {
+      console.log("GET /coin/:id/chart/:days?");
       res.json(response);
     })
     .catch(error => {
@@ -68,6 +72,7 @@ router.get('/global', function (req, res) {
 
   api_helper.REMOTE_API_call(url)
     .then(response => {
+      console.log("GET /global");
       res.json(response.data);
     })
     .catch(error => {
@@ -75,8 +80,5 @@ router.get('/global', function (req, res) {
       res.send(error);
     })
 })
-
-
-
 
 module.exports = router;

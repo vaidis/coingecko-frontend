@@ -4,7 +4,7 @@ const config = {
  },
  coingecko: {
   api_url: 'https://api.coingecko.com/api/v3'
-} 
+}
 };
 
 module.exports = config;
