@@ -53,13 +53,13 @@ const CoinList = (): JSX.Element => {
       }
       {
         data && globalData && isSuccess &&
-        <Box className="coin-list">
+        <Box className="coin-list" aria-label="coins" data-testid="coins">
           <span className="globalText">
             {`The global cryptocurrency market has currently ${globalData.active_cryptocurrencies}
             active cryptocurrencies, and ${globalData.markets} markets`}<br />
           </span>
           <TableContainer style={{ marginTop: 20 }}>
-            <Table size="small" aria-label="simple table">
+            <Table size="small" aria-label="coins-table" >
               <TableHead>
                 <TableRow>
                   <TableCell align="right" sx={{ display: { xs: 'none', sm: 'table-cell', md: 'table-cell' } }}>
@@ -78,7 +78,7 @@ const CoinList = (): JSX.Element => {
                   </TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody>
+              <TableBody data-testid="coins-table">
                 {
                   data.map((row: ICoinsListItem, index: number) => (
                     <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border:0 } }}>

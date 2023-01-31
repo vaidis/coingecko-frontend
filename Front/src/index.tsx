@@ -12,9 +12,16 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+import { worker } from './test/msw/browser';
+
+if (process.env.NODE_ENV === 'test') {
+  worker.start();
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
       <Provider store={store}>

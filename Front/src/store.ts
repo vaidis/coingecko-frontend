@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 import { coinListApi } from './coinApi/coinApi';
@@ -16,7 +16,20 @@ export const store = configureStore({
   middleware: (defaultMiddleware) => defaultMiddleware().concat(coinListApi.middleware),
 });
 
+// for AppStore
+export function setupStore(preloadedState?: PreloadedState<RootState>) {
+  return configureStore({
+    reducer: rootReducer,
+    // preloadedState,
+    middleware: getDefaultMiddleware => getDefaultMiddleware({
+      immutableCheck: false,
+      serializableCheck: false,
+    }).concat(coinListApi.middleware),
+  })
+}
+
 // Store types
+export type AppStore = ReturnType<typeof setupStore>; // from AppStore
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 

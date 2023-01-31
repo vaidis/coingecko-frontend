@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1675118659618" clover="3.2.0">
+  <project timestamp="1675118659618" name="All files">
+    <metrics statements="38" coveredstatements="32" conditionals="20" coveredconditionals="17" methods="16" coveredmethods="10" elements="74" coveredelements="59" complexity="0" loc="38" ncloc="38" packages="3" files="5" classes="5"/>
+    <package name="src">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+      <file name="store.ts" path="/home/ste/Documents/Dev-git/coingecko-frontend/Front/src/store.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.coinList">
+      <metrics statements="22" coveredstatements="16" conditionals="18" coveredconditionals="16" methods="9" coveredmethods="4"/>
+      <file name="coinList.tsx" path="/home/ste/Documents/Dev-git/coingecko-frontend/Front/src/coinList/coinList.tsx">
+        <metrics statements="9" coveredstatements="9" conditionals="15" coveredconditionals="13" methods="2" coveredmethods="2"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="10" type="stmt"/>
+        <line num="25" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="10" type="stmt"/>
+        <line num="36" count="10" type="stmt"/>
+        <line num="44" count="10" type="stmt"/>
+        <line num="46" count="10" type="stmt"/>
+        <line num="84" count="24" type="stmt"/>
+      </file>
+      <file name="coinListPager.tsx" path="/home/ste/Documents/Dev-git/coingecko-frontend/Front/src/coinList/coinListPager.tsx">
+        <metrics statements="13" coveredstatements="7" conditionals="3" coveredconditionals="3" methods="7" coveredmethods="2"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="16" count="7" type="stmt"/>
+        <line num="17" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.common">
+      <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+      <file name="error.tsx" path="/home/ste/Documents/Dev-git/coingecko-frontend/Front/src/common/error.tsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="spinner.tsx" path="/home/ste/Documents/Dev-git/coingecko-frontend/Front/src/common/spinner.tsx">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
