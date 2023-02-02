@@ -16,30 +16,28 @@ const Pager = (props: IPagerProps): JSX.Element => {
   const navigate = useNavigate();
   const theme = useTheme();
 
-  const lastPage = (data: number) => Math.ceil(data / per_page)
+  const lastPage = (data: number, per_page: number) => Math.ceil(data / per_page);
 
   function handlePager(page: number) {
     const url = `/?page=${page}`
     navigate(url)
   }
 
-  return (<>
-    {
-      data && isSuccess &&
-      <Grid container justifyContent="center" sx={{ mt: 8, mb: 8 }} aria-label="pager">
-        <ButtonGroup
-          variant="contained"
-          sx={{background: theme.palette.background.paper}}
-        >
-          <Button disabled={page === 1} onClick={() => navigate("/")}>First</Button>
-          <Button disabled={page === 1} onClick={() => handlePager(page - 1)}>Prev</Button>
-          <Typography style={{ padding: 10 }}>Page {page} from {lastPage(data.count)}</Typography>
-          <Button disabled={page === lastPage(data.count)} onClick={() => handlePager(page + 1)}>Next</Button>
-          <Button disabled={page === lastPage(data.count)} onClick={() => handlePager(lastPage(data.count))}>Last</Button>
-        </ButtonGroup>
-      </Grid>
-    }
-  </>
+  return (
+    <>
+      {
+        data && isSuccess &&
+        <Grid container justifyContent="center" sx={{ mt: 8, mb: 8 }} aria-label="pager">
+          <ButtonGroup variant="contained" sx={{ background: theme.palette.background.paper }}>
+            <Button disabled={page === 1} onClick={() => navigate("/")}>First</Button>
+            <Button disabled={page === 1} onClick={() => handlePager(page - 1)}>Prev</Button>
+            <Typography style={{padding: 10}}>Page {page} from {lastPage(data.count, per_page)}</Typography>
+            <Button disabled={page === lastPage(data.count, per_page)} onClick={() => handlePager(page + 1)}>Next</Button>
+            <Button disabled={page === lastPage(data.count, per_page)} onClick={() => handlePager(lastPage(data.count, per_page))}>Last</Button>
+          </ButtonGroup>
+        </Grid>
+      }
+    </>
   )
 }
 

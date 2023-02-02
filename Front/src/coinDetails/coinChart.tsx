@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Chart as ChartJS,
+  Chart,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -32,7 +32,7 @@ import {
 
 import { IDurationOptions } from './coinDetails-types';
 
-ChartJS.register(
+Chart.register(
   CategoryScale,
   LinearScale,
   PointElement,
